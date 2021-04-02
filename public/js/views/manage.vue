@@ -22,7 +22,12 @@ vueManage = new Vue({
         });
     },
     methods: {
+        clearValidation() {
+            this.errors.clear();
+            this.$validator.reset();
+        },
         async addQuestion() {
+            this.errors = [];
             await this.$validator.validate('question').then((valid) => {
                 if (valid) {
                     this.form.questions.push({
@@ -30,6 +35,7 @@ vueManage = new Vue({
                         question: (this.question.substr(-1, 1) === '?') ? this.question : this.question + '?'
                     });
                     this.question = '';
+                    this.clearValidation();
                 }
             });
         },
