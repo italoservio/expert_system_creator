@@ -1,15 +1,15 @@
 import sequelize from '../db.js';
-import Sistema from '../models/Sistema.js';
+import System from '../models/System.js';
 import * as yup from 'yup';
 
-class SistemaController {
+class SystemController {
     async index(req, res) {
         res.render('index', {
             layout: 'layouts/default',
             bg: 'bg-lime'
         });
     }
-    async sistema(req, res) {
+    async system(req, res) {
         res.render('manage', {
             layout: 'layouts/default',
             bg: 'bg-primary'
@@ -18,11 +18,11 @@ class SistemaController {
     async create(req, res) {
         (async () => {
             try {
-                const resultadoCreate = await Sistema.create({
-                    titulo: 'Animais 4',
-                    descricao: 'Um sistema especialista em animais 4'
+                const resultCreate = await System.create({
+                    title: 'Animais 4',
+                    description: 'Um sistema especialista em animais 4'
                 });
-                console.log(resultadoCreate);
+                console.log(resultCreate);
             } catch (error) {
                 console.log(error);
             }
@@ -30,4 +30,4 @@ class SistemaController {
     }
 }
 
-export default SistemaController;
+export default SystemController;

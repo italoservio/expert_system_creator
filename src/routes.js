@@ -1,23 +1,24 @@
 import express from 'express';
 
 // Controllers
-import ElementoController from './controllers/elementoController.js';
-import PerguntaElementoController from './controllers/elementoPerguntaController.js';
-import PerguntaController from './controllers/perguntaController.js';
-import SistemaController from './controllers/sistemaController.js';
+import ElementController from './controllers/elementController.js';
+import QuestionElementController from './controllers/questionElementController.js';
+import QuestionController from './controllers/questionController.js';
+import SystemController from './controllers/systemController.js';
 
 const { Router } = express;
 const router = Router();
 
-const elementoController = new ElementoController();
-const perguntaElementoController = new PerguntaElementoController();
-const perguntaController = new PerguntaController();
-const sistemaController = new SistemaController();
+const elementController = new ElementController();
+const questionElementController = new QuestionElementController();
+const questionController = new QuestionController();
+const systemController = new SystemController();
 
-// Sistema
-router.get('/', sistemaController.index);
-router.post('/create', sistemaController.create);
+// systemController
+router.get('/', systemController.index);
+router.get('/system', systemController.system);
 
-// router.get('/answers/:grade', surveyUserController.setValue); usar "req.params" para obter grade (são os route params)
+// questionController
+router.get('/all', questionController.getAll)
 
 export { router };

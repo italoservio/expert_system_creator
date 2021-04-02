@@ -1,6 +1,5 @@
 * {
     border-radius: 0 !important;
-    box-shadow: none !important;
 }
 
 .section {
@@ -14,13 +13,39 @@
     width: 100%;
 }
 
-.bg-light-gray {
-    background-color: #f5f5f5;
+.bg-lime {
+    background-color: #b5d098;
 }
 
-.form-signin {
-    width: 100%;
-    max-width: 330px;
-    padding: 15px;
-    margin: auto;
+.form-control:focus, .btn:focus, .form-check-input:focus, .page-link:focus, label {
+    box-shadow: none !important;
+}
+
+.text-justify {
+    text-align: justify !important;
+}
+
+.box-shadow {
+    -webkit-box-shadow: 0px 2px 3px 1px rgb(0,0,0.3);
+    -moz-box-shadow: 0px 2px 3px 1px rgba(0,0,0,.3);
+    box-shadow: 0px 2px 3px 1px rgba(0,0,0,.3);
+}
+
+.btn.btn-white {
+    background-color: #fff;
+    color: rgb(73, 73, 73);
+}
+
+.btn.btn-white:hover {
+    background-color: rgb(245, 245, 245);
+    color: rgb(73, 73, 73);
+}
+
+.card-height {
+    max-height: 172px;
+}
+
+.px-list-group {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
 }

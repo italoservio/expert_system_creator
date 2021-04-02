@@ -5,10 +5,7 @@ const sequelize = new Sequelize({
     storage: 'src/database/db.sqlite'
 });
 
-/* Remember to synchronize database in the first run
-(async () => {
-    await sequelize.sync();
-})();
-*/
+//Remember to synchronize database in the first run:
+//(async () => { await sequelize.sync(); })();
 
 export default sequelize;

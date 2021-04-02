@@ -1,0 +1,88 @@
+<div id="vueManage" class="row justify-content-center">
+    <!-- Card 1 -->
+    <div class="card col-lg-4">
+        <div class="card-body py-4 mx-1">
+            <h1 class="h3">Create element</h1>
+            <div class="row">
+                <div class="form-group my-4 mx-0">
+                    <label>Element name</label>
+                    <input data-vv-name="element name" v-validate="'required'"
+                        v-model="form.element" class="form-control" type="text" />
+                    <small class="text-danger">{{errors.first('element name')}}</small>
+                </div>
+                <div class="form-group mb-4 mx-0">
+                    <label>Question</label>
+                    <input data-vv-name="question" v-validate="'required'" v-model="question"
+                        class="form-control" type="text" />
+                    <small class="text-danger">{{errors.first('question')}}</small>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="d-flex justify-content-end">
+                <button v-on:click="addQuestion" class="btn btn-secondary box-shadow">Add question</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card col-lg-4 mx-1">
+        <div class="card-body py-4">
+            <div class="d-flex justify-content-between">
+                <h1 class="h3">Questions</h1>
+                <button v-on:click="loadQuestions" class="btn btn-outline-secondary box-shadow">Import</button>
+            </div>
+            <div class="row card-height overflow-auto mt-4 mx-0">
+                <ul class="list-group px-list-group">
+                    <!-- Listando novas questions -->
+                    <li v-for="(question, index) in form.questions"
+                        class="list-group-item w-100 d-flex justify-content-between align-items-center overflow-auto">
+                        <span>{{question.question}}</span>
+                        <small class="text-primary"><button class="btn btn-link" v-on:click="removeQuestion(index)"><i>Remove</i></button></small>
+                    </li>
+                    <!-- Listando questions selecionadas -->
+                    <li v-for="(question, index) in modalContent.selectedQuestions"
+                        class="list-group-item w-100 d-flex justify-content-between align-items-center overflow-auto">
+                        <span>{{question.question}}</span>
+                        <small class="text-primary"><button class="btn btn-link" v-on:click="removeImportedQuestion(index)"><i>Remove</i></button></small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-footer bg-white">
+            <div class="d-flex justify-content-end">
+                <button v-on:click="sendElement" class="btn btn-success box-shadow">Finish creation</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 1 -->
+    <div id="modalImport" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{modalContent.title}}</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group mb-4">
+                        <label>Find question</label>
+                        <div class="d-flex">
+                            <input v-model="modalContent.search" class="form-control" type="text" />
+                            <button v-on:click="searchQuestion" class="btn btn-outline-primary">Search</button>
+                        </div>
+                    </div>
+                    <!-- Componente de paginação-->
+                    <paginated-list :list-data="modalContent.loadedQuestions"></paginated-list>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-outline-secondary"
+                        data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" v-on:click="importQuestions" data-bs-dismiss="modal" class="btn btn-success">Finish import</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/components/components.vue"></script>
+<script src="js/views/manage.vue"></script>
