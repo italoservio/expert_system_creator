@@ -9,7 +9,7 @@ class SystemController {
             bg: 'bg-lime'
         });
     }
-    async system(req, res) {
+    async manage(req, res) {
         res.render('manage', {
             layout: 'layouts/default',
             bg: 'bg-primary'
@@ -30,4 +30,4 @@ class SystemController {
     }
 }
 
-export default SystemController;
+export { SystemController };

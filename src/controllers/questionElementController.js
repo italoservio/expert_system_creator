@@ -12,4 +12,4 @@ class QuestionElementController {
     }
 }
 
-export default QuestionElementController;
+export { QuestionElementController };

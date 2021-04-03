@@ -1,25 +1,16 @@
-<div class="row justify-content-center">
-    <div class="text-center mb-3">
-        <h1>Expert System</h1>
+<div id="vueIndex" class="row mx-0 justify-content-center">
+    <div class="text-center my-4 my-lg-5">
+        <h1>Expert Systems</h1>
     </div>
-    <div class="card box-shadow col-lg-4 mx-1 py-3">
-        <div class="card-body">
-            <span class="mb-2 fs-3">🛠</span>
-            <h5 class="card-title">Manage elements</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Manage elements panel</h6>
-        </div>
-        <div class="card-footer border-0 bg-white">
-            <a href="/system" class="btn btn-sm btn-secondary box-shadow">Access</a>
-        </div>
+    <div class="col-lg-3">
+        <a href="/manage" class="card card-new p-4 centered text-center mb-4">
+            <h1><i class="fas fa-plus"></i><br />New expert system</h1>
+        </a>
     </div>
-    <div class="card box-shadow col-lg-4 mx-1 py-3">
-        <div class="card-body">
-            <span class="mb-2 fs-3">🧐</span>
-            <h5 class="card-title">Expert System</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Access expert system</h6>
-        </div>
-        <div class="card-footer border-0 bg-white">
-            <a href="#" class="btn btn-sm btn-secondary box-shadow">Access</a>
-        </div>
+    <div v-for="system in arrSystems" class="col-lg-3 mb-4">
+        <system-card :id="system.id" :title="system.title" :desc="system.description"></system-card>
     </div>
 </div>
+
+<script src="js/components/systemCard.vue"></script>
+<script src="js/views/index.vue"></script>

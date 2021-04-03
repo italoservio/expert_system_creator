@@ -12,4 +12,4 @@ class ElementController {
     }
 }
 
-export default ElementController;
+export { ElementController };

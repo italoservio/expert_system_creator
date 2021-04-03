@@ -16,4 +16,4 @@ class QuestionController {
     }
 }
 
-export default QuestionController;
+export { QuestionController };

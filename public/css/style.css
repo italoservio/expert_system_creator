@@ -4,6 +4,12 @@
 
 .section {
     height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,4 +54,28 @@
 .px-list-group {
     padding-right: 0 !important;
     padding-left: 0 !important;
+}
+
+.card.card-new {
+    cursor: pointer;
+    height: 339px;
+    border: 2px dashed #78945b;
+    background-color: rgba(159, 194, 131, 0.5);
+    transition: .2s;
+    text-decoration: none;
+}
+
+.card.card-new:hover {
+    border: 2px dashed #78945b;
+    background-color: rgba(153, 204, 108, 0.5);
+    transition: .2s;
+}
+
+.card.card-new > h1 {
+    line-height: .9;
+    color: #78945b;
+}
+
+.card.card-system {
+    height: 339px;
 }
