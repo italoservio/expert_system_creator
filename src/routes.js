@@ -14,7 +14,10 @@ const systemController = new SystemController();
 
 // systemController
 router.get('/', systemController.index);
-router.get('/manage', systemController.manage);
+router.get('/manage/:id?', systemController.manage);
+
+// elementController
+router.get('/element/:id?', elementController.index);
 
 // questionController
 router.get('/all', questionController.getAll)

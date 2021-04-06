@@ -5,6 +5,7 @@
 .section {
     height: 100vh;
     display: grid;
+    grid-template-columns: 1fr;
     justify-content: center;
     align-items: center;
 }
@@ -21,6 +22,10 @@
 
 .bg-lime {
     background-color: #b5d098;
+}
+
+.bg-light-brown {
+    background-color: #d2c2ab;
 }
 
 .form-control:focus, .btn:focus, .form-check-input:focus, .page-link:focus, label {
@@ -78,4 +83,10 @@
 
 .card.card-system {
     height: 339px;
+}
+
+@media screen and (max-width: 322px) {
+    .card.card-system {
+        height: auto;
+    }
 }

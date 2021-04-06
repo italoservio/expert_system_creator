@@ -4,11 +4,11 @@ import * as yup from 'yup';
 
 class ElementController {
     async index(req, res) {
-        res.send('QuestionElement');
-        // res.render('index', {
-        //     layout: 'layouts/default',
-        //     title: 'Home page'
-        // });
+        //const id = req.params.id;
+        res.render('element', {
+            layout: 'layouts/default',
+            bg: 'bg-light-brown'
+        });
     }
 }
 
