@@ -89,11 +89,23 @@ vueElement = new Vue({
             this.setListedData(this.modalContent.searchedQuestions);
         },
         async sendElement() {
-            let isValid = await this.$validator.validate('element name').then((valid) => valid);
-            console.log(isValid);
+            await this.$validator.validate('element name').then((valid) => {
+                if (valid) {
+                    console.log(this.form.questions);
+                    console.log(this.modalContent.selectedQuestions);
+                }
+            });
+        },
+        loadElement() {
+            if (helper.getRouteParam(1) !== undefined) {
+                alert('Getting element data');
+            } else {
+                console.log(helper.getTempSystem());
+            }
         }
     },
     mounted() {
+        this.loadElement();
         this.modal = new bootstrap.Modal(document.getElementById('modalImport'), {
             keyboard: false,
             backdrop: 'static'

@@ -15,11 +15,15 @@ const systemController = new SystemController();
 // systemController
 router.get('/', systemController.index);
 router.get('/manage/:id?', systemController.manage);
+router.get('/system/:id?', systemController.run);
+
 
 // elementController
+router.get('/manage/:sysId?/element/:elId?', elementController.index);
 router.get('/element/:id?', elementController.index);
 
 // questionController
 router.get('/all', questionController.getAll)
+router.post('/set', questionController.set)
 
 export { router };

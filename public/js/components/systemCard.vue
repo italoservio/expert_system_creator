@@ -34,7 +34,7 @@ Vue.component('system-card', {
         }
     },
     template: `
-    <div class="card card-system">
+    <div class="card box-shadow card-system mx-1">
         <div class="card-header bg-white py-3 px-4">
             <h1 class="h5 mb-0">{{reduceTitle}}</h1>
         </div>

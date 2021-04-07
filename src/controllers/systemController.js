@@ -10,6 +10,7 @@ class SystemController {
         });
     }
     async manage(req, res) {
+        const id = req.params.id;
         res.render('manage', {
             layout: 'layouts/default',
             bg: 'bg-primary'
@@ -27,6 +28,9 @@ class SystemController {
                 console.log(error);
             }
         })();
+    }
+    async run(req, res) {
+
     }
 }
 

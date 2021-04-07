@@ -1,7 +1,7 @@
 <div id="vueElement" class="row mx-0 px-0 justify-content-center">
     <!-- Card 2 -->
     <div class="col-lg-4 px-0 my-2 my-lg-0">
-        <div class="card me-0 me-lg-1">
+        <div class="card box-shadow me-0 me-lg-1">
             <div class="card-body py-4">
                 <h1 class="h3">Create element</h1>
                 <div class="row mx-0">
@@ -18,8 +18,9 @@
                 </div>
             </div>
             <div class="card-footer bg-white">
-                <div class="d-flex justify-content-end">
-                    <button v-on:click="addQuestion" class="btn btn-secondary box-shadow">Add question</button>
+                <div class="d-flex justify-content-between">
+                    <a href="/manage" class="btn btn-sm btn-outline-secondary box-shadow">Cancel</a>
+                    <button v-on:click="addQuestion" class="btn btn-sm btn-secondary box-shadow">Add question</button>
                 </div>
             </div>
         </div>
@@ -27,11 +28,13 @@
 
     <!-- Card 3 -->
     <div class="col-lg-4 px-0 my-2 my-lg-0">
-        <div class="card h-100 ms-0 ms-lg-1">
+        <div class="card box-shadow h-100 ms-0 ms-lg-1">
             <div class="card-body py-4">
                 <div class="d-flex justify-content-between">
                     <h1 class="h3">Questions</h1>
-                    <button v-on:click="loadQuestions" class="btn btn-outline-secondary box-shadow">Import</button>
+                    <div>
+                        <button v-on:click="loadQuestions" class="btn btn-outline-secondary btn-sm box-shadow">Import</button>
+                    </div>
                 </div>
                 <div class="row card-height overflow-auto mt-4 mx-0">
                     <ul class="list-group px-list-group">
@@ -52,7 +55,7 @@
             </div>
             <div class="card-footer bg-white">
                 <div class="d-flex justify-content-end">
-                    <button v-on:click="sendElement" class="btn btn-success box-shadow">Finish creation</button>
+                    <button v-on:click="sendElement" class="btn btn-sm btn-success box-shadow">Finish element creation</button>
                 </div>
             </div>
         </div>
@@ -86,5 +89,5 @@
 </div>
 
 
-<script src="js/components/paginatedList.vue"></script>
-<script src="js/views/element.vue"></script>
+<script src="/js/components/paginatedList.vue"></script>
+<script src="/js/views/element.vue"></script>
