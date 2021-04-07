@@ -1,4 +1,5 @@
 const helper = {
+    // Temp System:
     hasTempSystem() {
         return (this.getTempSystem() !== null) ? true : false;
     },
@@ -14,8 +15,9 @@ const helper = {
     addElementToTempSystem(p_obj) {
         system = this.getTempSystem();
         system.elements.splice(system.elements.length, 0, p_obj);
-        setTempSystem(system);
+        this.setTempSystem(system);
     },
+    // Helper functions:
     getRouteParam(p_index) {
         const routeTokens = location.pathname.replace(/^\/+/g,'').split('/');
         return routeTokens.length > p_index ? routeTokens[p_index] : undefined;
@@ -24,6 +26,9 @@ const helper = {
         p_arr.find((obj, i) => {
             if (obj[p_key] === p_value) return p_arr[i];
         });
+    },
+    capitalize(p_str) {
+        return p_str[0].toUpperCase() + p_str.slice(1);
     }
 }
 

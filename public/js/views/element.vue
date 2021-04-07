@@ -21,7 +21,13 @@ vueElement = new Vue({
             validate: (value) => { return (value !== null) ? (value.length > 0) : false; }
         });
     },
+    computed: {
+        allQuestions() {
+            return this.form.questions.concat(this.modalContent.selectedQuestions);
+        }
+    },
     methods: {
+        // Manual question actions:
         clearValidation() {
             this.errors.clear();
             this.$validator.reset();
@@ -30,9 +36,10 @@ vueElement = new Vue({
             this.errors = [];
             await this.$validator.validate('question').then((valid) => {
                 if (valid) {
+                    const questionCapitalized = helper.capitalize(this.question);
                     this.form.questions.push({
                         id: null,
-                        question: (this.question.substr(-1, 1) === '?') ? this.question : this.question + '?'
+                        question: (questionCapitalized.substr(-1, 1) === '?') ? questionCapitalized : questionCapitalized + '?'
                     });
                     this.question = '';
                     this.clearValidation();
@@ -42,9 +49,7 @@ vueElement = new Vue({
         removeQuestion(index) {
             this.form.questions.splice(index, 1);
         },
-        removeImportedQuestion(index) {
-            this.$children[0].selectedQuestions.splice(index, 1);
-        },
+        // Import question actions:
         loadQuestions() {
             this.modalContent.title = 'Questions already registered';
             this.modalContent.loadedQuestions = [
@@ -71,13 +76,14 @@ vueElement = new Vue({
             ];
             this.modal.show();
         },
+        removeImportedQuestion(index) {
+            this.$children[0].selectedQuestions.splice(index, 1);
+        },
         importQuestions() {
             this.modalContent.selectedQuestions = this.$children[0].selectedQuestions;
         },
-        setListedData(array) {
-            this.$children[0].listData = array;
-        },
         searchQuestion() {
+            // Searching and sending finded elements to component list-data:
             if (this.modalContent.search !== '') {
                 this.modalContent.searchedQuestions = [];
                 for (const i of this.modalContent.loadedQuestions) {
@@ -88,19 +94,24 @@ vueElement = new Vue({
             }
             this.setListedData(this.modalContent.searchedQuestions);
         },
+        setListedData(array) {
+            this.$children[0].listData = array;
+        },
+        // Element actions
         async sendElement() {
             await this.$validator.validate('element name').then((valid) => {
                 if (valid) {
-                    console.log(this.form.questions);
-                    console.log(this.modalContent.selectedQuestions);
+                    helper.addElementToTempSystem({
+                        name: helper.capitalize(this.form.element),
+                        questions: this.allQuestions
+                    });
+                    window.location.href = "/manage"
                 }
             });
         },
         loadElement() {
             if (helper.getRouteParam(1) !== undefined) {
                 alert('Getting element data');
-            } else {
-                console.log(helper.getTempSystem());
             }
         }
     },

@@ -26,7 +26,7 @@
                 <div class="d-flex justify-content-between">
                     <h2 class="h5 mb-3">System elements</h2>
                     <div>
-                        <a href="/element" class="btn btn-outline-secondary box-shadow btn-sm">Create element</a>
+                        <button v-on:click="goToCreateElement" class="btn btn-outline-secondary box-shadow btn-sm">Create element</button>
                     </div>
                 </div>
                 <ul class="list-group">
@@ -41,7 +41,8 @@
 
             </div>
             <div class="card-footer bg-white">
-                <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-between">
+                    <button v-on:click="back()" class="btn btn-sm btn-outline-secondary box-shadow">Cancel</button>
                     <button v-on:click="create()" class="btn btn-sm btn-success box-shadow">Finish system creation</button>
                 </div>
             </div>

@@ -38,12 +38,22 @@ vueManage = new Vue({
         }
     },
     methods: {
+        // URL actions:
         deleteURL(p_id) {
             return `/delete/${p_id}`;
         },
         editURL(p_id) {
             return `/element/${p_id}`;
         },
+        goToCreateElement() {
+            helper.setTempSystem(this.form);
+            window.location.href = '/element';
+        },
+        back() {
+            helper.clearTempSystem();
+            window.location.href = '/';
+        },
+        // CRUD actions:
         async create() {
             await this.$validator.validateAll().then((valid) => {
                 if (valid) {
