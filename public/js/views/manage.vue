@@ -39,9 +39,6 @@ vueManage = new Vue({
     },
     methods: {
         // URL actions:
-        deleteURL(p_id) {
-            return `/delete/${p_id}`;
-        },
         editURL(p_id) {
             return `/element/${p_id}`;
         },
@@ -61,8 +58,11 @@ vueManage = new Vue({
                 }
             });
         },
-        delete() {
-            alert('Deleting...');
+        deleteElement(p_index) {
+            let form = helper.getTempSystem();
+            form.elements.splice(p_index, 1);
+            helper.setTempSystem(form);
+            this.form.elements.splice(p_index, 1);
         },
         loadSystem() {
             if (helper.getRouteParam(1) !== undefined) {
