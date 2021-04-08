@@ -6,9 +6,9 @@ vueManage = new Vue({
             name: '',
             description: '',
             elements: [
-                //{ id: 1, name: 'Element 1' },
-                //{ id: 2, name: 'Element 2' },
-                //{ id: 3, name: 'Element 3' }
+                //{ id: 1, element: 'Element 1' questions: []},
+                //{ id: 2, element: 'Element 2' questions: []},
+                //{ id: 3, element: 'Element 3' questions: []}
             ]
         },
         lotCaracters: false,
@@ -74,14 +74,34 @@ vueManage = new Vue({
             system.elements.splice(p_index, 1);
             helper.setTempSystem(system);
             this.form.elements.splice(p_index, 1);
+            // ir ao banco
+        },
+        deleteSystem() {
+            const id = helper.getRouteParam(1);
+            fetch(`/system/delete/${id}`, {
+                method: 'delete',
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+            });
         },
         loadSystem() {
             if (helper.getRouteParam(1) !== undefined) {
                 this.isEdit = true;
-                alert('Getting system data');
+                const id = helper.getRouteParam(1);
+                fetch(`/system/get/${id}`, {
+                    method: "get",
+                    headers: { "Content-Type": "application/json" }
+                })
+                .then((res) => res.json())
+                .then((data) => {
+                    this.form = data;
+                    helper.setTempSystem(data);
+                });
             } else if (!helper.hasTempSystem()) {
                 helper.setTempSystem({
-                    id: 0,
+                    id: null,
                     name: '',
                     description: '',
                     elements: []

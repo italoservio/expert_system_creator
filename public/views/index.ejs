@@ -3,12 +3,12 @@
         <h1>Expert Systems</h1>
     </div>
     <div class="col-md-6 col-lg-4 col-xxl-3 mb-4 px-0">
-        <a href="/manage" class="card card-new mx-1 p-4 centered text-center">
+        <a v-on:click="goToManage()" class="card card-new mx-1 p-4 centered text-center">
             <h1><i class="fas fa-plus"></i><br />New expert system</h1>
         </a>
     </div>
     <div v-for="system in arrSystems" class="col-md-6 col-lg-4 col-xxl-3 mb-4 px-0">
-        <system-card :id="system.id" :title="system.title" :desc="system.description"></system-card>
+        <system-card :id="system.id" :title="system.name" :desc="system.description"></system-card>
     </div>
 </div>
 

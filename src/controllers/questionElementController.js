@@ -5,10 +5,6 @@ import * as yup from 'yup';
 class QuestionElementController {
     async index(req, res) {
         res.send('QuestionElement');
-        // res.render('index', {
-        //     layout: 'layouts/default',
-        //     title: 'Home page'
-        // });
     }
 }
 

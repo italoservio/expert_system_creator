@@ -9,13 +9,13 @@ vueSystem = new Vue({
         sendJson() {
             alert(this.form.input);
 
-            axios.get('https://localhost:5001/api/weatherforecast')
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+            // axios.get('https://localhost:5001/api/weatherforecast')
+            // .then(function (response) {
+            //     console.log(response);
+            // })
+            // .catch(function (error) {
+            //     console.log(error);
+            // });
         }
     },
     mouted() {
