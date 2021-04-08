@@ -12,6 +12,14 @@ Web application developed using NodeJS w / ExpressJS, VueJS and SQLite that allo
 
 <br />
 
+<h3 align="center">⚡ ER Diagram</h3>
+<p align="center">Understand the database structure</p>
+<h1 align="center">
+  <img alt="First screen" src="https://imgur.com/a/4q4o1U5.png" />
+</h1>
+
+<br />
+
 <h3 align="center">🎨 Contributor(s)</h4>
 <table align="center">
   <tr>
