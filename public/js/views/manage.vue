@@ -2,7 +2,7 @@ vueManage = new Vue({
     el: '#vueManage',
     data: {
         form: {
-            id: 0,
+            id: null,
             name: '',
             description: '',
             elements: [
@@ -11,7 +11,8 @@ vueManage = new Vue({
                 //{ id: 3, name: 'Element 3' }
             ]
         },
-        lotCaracters: false
+        lotCaracters: false,
+        isEdit: false
     },
     created() {
         this.$validator.extend('required', {
@@ -39,33 +40,44 @@ vueManage = new Vue({
     },
     methods: {
         // URL actions:
-        editURL(p_id) {
-            return `/element/${p_id}`;
-        },
         goToCreateElement() {
             helper.setTempSystem(this.form);
             window.location.href = '/element';
         },
-        back() {
+        goToEditElement(p_index) {
+            helper.setTempSystem(this.form);
+            window.location.href = `/element/${p_index}`;
+        },
+        backToHome() {
             helper.clearTempSystem();
             window.location.href = '/';
         },
         // CRUD actions:
         async create() {
-            await this.$validator.validateAll().then((valid) => {
-                if (valid) {
+            const valid = this.$validator.validateAll().then((valid) => valid);
+            if (valid) {
+                fetch("/system/create", {
+                    method: "post",
+                    body: JSON.stringify(this.form),
+                    headers: { "Content-Type": "application/json" },
+                })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
                     helper.clearTempSystem();
-                }
-            });
+                    window.location.href = '/';
+                });
+            }
         },
         deleteElement(p_index) {
-            let form = helper.getTempSystem();
-            form.elements.splice(p_index, 1);
-            helper.setTempSystem(form);
+            let system = helper.getTempSystem();
+            system.elements.splice(p_index, 1);
+            helper.setTempSystem(system);
             this.form.elements.splice(p_index, 1);
         },
         loadSystem() {
             if (helper.getRouteParam(1) !== undefined) {
+                this.isEdit = true;
                 alert('Getting system data');
             } else if (!helper.hasTempSystem()) {
                 helper.setTempSystem({

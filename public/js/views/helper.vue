@@ -12,9 +12,13 @@ const helper = {
     clearTempSystem() {
         window.localStorage.removeItem('system');
     },
-    addElementToTempSystem(p_obj) {
+    addElementToTempSystem(p_obj, p_index = null) {
         system = this.getTempSystem();
-        system.elements.splice(system.elements.length, 0, p_obj);
+        if (p_index === null) {
+            system.elements.splice(system.elements.length, 0, p_obj);
+        } else {
+            system.elements[p_index] = p_obj;
+        }
         this.setTempSystem(system);
     },
     // Helper functions:
@@ -31,44 +35,3 @@ const helper = {
         return p_str[0].toUpperCase() + p_str.slice(1);
     }
 }
-
-// const vuexSys = new Vuex.Store({
-//     state: {
-//         system: {
-//             id: null,
-//             name: '',
-//             description: '',
-//             elements: []
-//         }
-//     },
-//     mutations: {
-//         setElement(state, p_obj) {
-//             this.elements.splice(this.elements.length, 0, p_obj);
-//         },
-//         set(state, p_obj) {
-//             state.system = p_obj;
-//             window.localStorage.setItem('system', JSON.stringify(p_obj));
-//         },
-//         load(state) {
-//             const system = JSON.parse(window.localStorage.getItem('system'));
-//             state.system = system;
-//         },
-//         clear(state) {
-//             state.system = {
-//                 id: null,
-//                 name: '',
-//                 description: '',
-//                 elements: []
-//             };
-//             window.localStorage.removeItem('system');
-//         }
-//     },
-//     actions: {
-//         setElement(state, p_obj) {
-//             state.commit('setElement', p_obj);
-//         },
-//         set(state, p_obj) {
-//             state.commit('set', p_obj);
-//         }
-//     }
-// });

@@ -3,8 +3,12 @@
     <div class="col-lg-8 my-2 px-0">
         <div class="card box-shadow">
             <div class="card-body py-4">
-
-                <h1 class="h3">Create system</h1>
+                <div class="d-flex justify-content-between">
+                    <h1 class="h3">Create system</h1>
+                    <div>
+                        <button v-if="isEdit" v-on:click="deleteSystem()" class="btn btn-sm btn-outline-danger">Delete system</button>
+                    </div>
+                </div>
                 <div class="row mx-0">
                     <div class="col-lg-6 px-0">
                         <div class="form-group my-4 px-0">
@@ -31,9 +35,9 @@
                 </div>
                 <ul class="list-group">
                     <li v-for="(el, i) in form.elements" class="list-group-item d-flex justify-content-between">
-                        {{ el.name }}
+                        {{ el.element }}
                         <div>
-                            <a v-bind:href="editURL(el.id)" class="mx-1"><i>Edit</i></a>
+                            <a v-on:click="goToEditElement(i)" class="mx-1 cursor-pointer"><i>Edit</i></a>
                             <a v-on:click="deleteElement(i)" class="text-muted cursor-pointer mx-1"><i>Delete</i></a>
                         </div>
                     </li>
@@ -42,7 +46,7 @@
             </div>
             <div class="card-footer bg-white">
                 <div class="d-flex justify-content-between">
-                    <button v-on:click="back()" class="btn btn-sm btn-outline-secondary box-shadow">Cancel</button>
+                    <button v-on:click="backToHome()" class="btn btn-sm btn-outline-secondary box-shadow">Cancel</button>
                     <button v-on:click="create()" class="btn btn-sm btn-success box-shadow">Finish system creation</button>
                 </div>
             </div>

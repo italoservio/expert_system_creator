@@ -20,6 +20,21 @@ vueElement = new Vue({
             getMessage: (field) => 'The field "' + field + '" is required',
             validate: (value) => { return (value !== null) ? (value.length > 0) : false; }
         });
+        this.$validator.extend('elementExists', {
+            getMessage: (field) => 'This element already exists',
+            validate: (value) => {
+                const index = helper.getRouteParam(1);
+                if (index === undefined) {
+                    let form = helper.getTempSystem();
+                    for (const i of form.elements) {
+                        if (i.element.toLowerCase() === value.toLowerCase()) {
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+        });
     },
     computed: {
         allQuestions() {
@@ -101,17 +116,21 @@ vueElement = new Vue({
         async sendElement() {
             await this.$validator.validate('element name').then((valid) => {
                 if (valid) {
-                    helper.addElementToTempSystem({
-                        name: helper.capitalize(this.form.element),
-                        questions: this.allQuestions
-                    });
-                    window.location.href = "/manage"
+                    const index = helper.getRouteParam(1);
+                    if (index !== undefined) {
+                        helper.addElementToTempSystem(this.form, index);
+                    } else {
+                        helper.addElementToTempSystem(this.form);
+                    }
+                    window.location.href = "/manage";
                 }
             });
         },
         loadElement() {
-            if (helper.getRouteParam(1) !== undefined) {
-                alert('Getting element data');
+            const index = helper.getRouteParam(1);
+            if (index !== undefined) {
+                let system = helper.getTempSystem();
+                this.form = system.elements[index];
             }
         }
     },

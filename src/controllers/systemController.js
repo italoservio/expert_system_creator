@@ -17,17 +17,18 @@ class SystemController {
         });
     }
     async create(req, res) {
-        (async () => {
-            try {
-                const resultCreate = await System.create({
-                    title: 'Animais 4',
-                    description: 'Um sistema especialista em animais 4'
-                });
-                console.log(resultCreate);
-            } catch (error) {
-                console.log(error);
-            }
-        })();
+        res.json(req.body);
+        // (async () => {
+        //     try {
+        //         const resultCreate = await System.create({
+        //             title: 'Animais 4',
+        //             description: 'Um sistema especialista em animais 4'
+        //         });
+        //         console.log(resultCreate);
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // })();
     }
     async run(req, res) {
 

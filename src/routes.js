@@ -16,10 +16,10 @@ const systemController = new SystemController();
 router.get('/', systemController.index);
 router.get('/manage/:id?', systemController.manage);
 router.get('/system/:id?', systemController.run);
+router.post('/system/create', systemController.create)
 
 
 // elementController
-router.get('/manage/:sysId?/element/:elId?', elementController.index);
 router.get('/element/:id?', elementController.index);
 
 // questionController
