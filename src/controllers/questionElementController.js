@@ -1,5 +1,5 @@
 import sequelize from '../db.js';
-import QuestionElement from '../models/QuestionElement.js';
+import { System, Element, Question, QuestionElement } from '../models/associations.js';
 import * as yup from 'yup';
 
 class QuestionElementController {

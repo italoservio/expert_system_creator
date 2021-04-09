@@ -13,7 +13,4 @@ const QuestionElement = sequelize.define('question_element', {
     }
 });
 
-QuestionElement.belongsTo(Element);
-QuestionElement.belongsTo(Question);
-
 export default QuestionElement;

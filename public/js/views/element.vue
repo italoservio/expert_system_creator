@@ -3,6 +3,7 @@ vueElement = new Vue({
     data: {
         question: '',
         form: {
+            id: null,
             element: '',
             questions: []
         },

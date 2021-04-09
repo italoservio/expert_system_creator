@@ -1,6 +1,6 @@
 import sequelize from '../db.js';
-import System from '../models/System.js';
 import * as yup from 'yup';
+import { System, Element, Question, QuestionElement } from '../models/associations.js';
 
 class SystemController {
     // Views:
@@ -10,6 +10,7 @@ class SystemController {
             bg: 'bg-lime'
         });
     }
+
     async manage(req, res) {
         const id = req.params.id;
         res.render('manage', {
@@ -17,53 +18,124 @@ class SystemController {
             bg: 'bg-primary'
         });
     }
+
     // Actions:
     async create(req, res) {
-        res.json(req.body);
-        // (async () => {
-        //     try {
-        //         const resultCreate = await System.create({
-        //             title: 'Animais 4',
-        //             description: 'Um sistema especialista em animais 4'
-        //         });
-        //         console.log(resultCreate);
-        //     } catch (error) {
-        //         console.log(error);
-        //     }
-        // })();
+        const t = await sequelize.transaction();
+        try {
+            // Creating or editing system:
+            let system = {};
+            if (req.body.id !== null) {
+                system = await System.findByPk(req.body.id);
+                system.title = req.body.title;
+                system.description = req.body.description
+                system.save({transaction: t});
+            } else {
+                system = await System.create({
+                    title: req.body.title,
+                    description: req.body.description
+                }, {transaction: t});
+            }
+
+            for (const i of req.body.elements) {
+
+                // Creating or editing element:
+                let element = {};
+                if (i.id !== null) {
+                    element = await Element.findByPk(i.id);
+                    element.element = i.element;
+                    element.save({transaction: t});
+                } else {
+                    element = await Element.create({
+                        element: i.element,
+                        systemId: system.id
+                    }, { transaction: t });
+                }
+
+                for (const j of i.questions) {
+
+                    // Creating or editing question:
+                    let question = {};
+                    if (j.id !== null) {
+                        question = await Question.findByPk(j.id);
+                        question.question =  j.question;
+                        question.save({ transaction: t });
+                    } else {
+                        question = await Question.create({
+                            question: j.question,
+                            systemId: system.id
+                        }, { transaction: t });
+
+                        // Creating question element:
+                        await QuestionElement.create({
+                            elementId: element.id,
+                            questionId: question.id
+                        }, { transaction: t });
+                    }
+                }
+            }
+            await t.commit();
+
+        } catch (err) {
+            await t.rollback();
+            res.json({ status: true });
+        }
+        res.json({ status: false });
     }
+
     async delete(req, res) {
+
         const id = req.params.id;
         res.json({
             id: id,
             status: true
         });
+
     }
+
     async get(req, res) {
         const id = req.params.id;
         if (id !== undefined) {
+
             // Go to DB and get a single System and your elements
-            res.json({
-                id: 1,
-                name: 'Animais',
-                description: 'Sistema especialista em identificar animais',
-                elements: [
-                    {
-                        id: 1,
-                        element: 'Gato',
-                        questions: []
-                    }
-                ]
+            const system = await System.findOne({
+                where: { id: req.params.id },
+                include: [{ model: Element, include: [{ model: QuestionElement, include: [{ model: Question }] }] }]
             });
+
+            let obj = {
+                id: system.id,
+                title: system.title,
+                description: system.description,
+                elements: []
+            };
+            for (const i of system.elements) {
+
+                let questions = [];
+                for (const j of i.question_elements) {
+                    questions.push({
+                        id: j.question.id,
+                        question: j.question.question
+                    });
+                }
+                obj.elements.push({
+                    id: i.id,
+                    element: i.element,
+                    questions: questions
+                });
+            }
+
+            res.json(obj);
+
         } else {
+
             // Get all systems whitout elements
-            res.json([{
-                id: 1,
-                name: 'Animais',
-                description: 'Sistema especialista em identificar animais'
-            }]);
+            const systems = await System.findAll();
+            res.json(systems);
+
         }
     }
+
     async run(req, res) {
         res.send('system');
     }

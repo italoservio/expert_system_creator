@@ -10,12 +10,10 @@ const Element = sequelize.define('element', {
         allowNull: false,
         primaryKey: true
     },
-    name: {
+    element: {
         type: DataTypes.STRING,
         allowNull: false
     }
 });
-
-Element.belongsTo(System);
 
 export default Element;

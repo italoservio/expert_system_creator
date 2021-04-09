@@ -3,7 +3,7 @@ vueManage = new Vue({
     data: {
         form: {
             id: null,
-            name: '',
+            title: '',
             description: '',
             elements: [
                 //{ id: 1, element: 'Element 1' questions: []},
@@ -63,7 +63,6 @@ vueManage = new Vue({
                 })
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log(data);
                     helper.clearTempSystem();
                     window.location.href = '/';
                 });
@@ -102,7 +101,7 @@ vueManage = new Vue({
             } else if (!helper.hasTempSystem()) {
                 helper.setTempSystem({
                     id: null,
-                    name: '',
+                    title: '',
                     description: '',
                     elements: []
                 });

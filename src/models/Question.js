@@ -10,12 +10,10 @@ const Question = sequelize.define('question', {
         allowNull: false,
         primaryKey: true
     },
-    name: {
+    question: {
         type: DataTypes.STRING,
         allowNull: false
     }
 });
-
-Question.belongsTo(System);
 
 export default Question;
