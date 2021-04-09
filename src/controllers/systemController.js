@@ -137,7 +137,10 @@ class SystemController {
     }
 
     async run(req, res) {
-        res.send('system');
+        res.render('system', {
+            layout: 'layouts/default',
+            bg: 'bg-secondary'
+        });
     }
 }
 

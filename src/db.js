@@ -2,7 +2,8 @@ import Sequelize from 'sequelize';
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: 'src/database/db.sqlite'
+    storage: 'src/database/db.sqlite',
+    //logging: false
 });
 
 //Remember to synchronize database in the first run:
