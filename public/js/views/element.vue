@@ -81,39 +81,18 @@ vueElement = new Vue({
 
         // Import question actions:
         loadQuestions() {
+            const system = helper.getTempSystem();
             this.modalContent.title = 'Questions already registered';
-
-            // fetch("/system/get", {
-            //     method: "GET",
-            //     headers: { "Content-Type": "application/json" }
-            // })
-            // .then((res) => res.json())
-            // .then((data) => {
-            //     this.arrSystems = data;
-            // });
-
-            this.modalContent.loadedQuestions = [
-                { id: 1, question: 'É redondo?' },
-                { id: 2, question: 'É quadrado?' },
-                { id: 3, question: 'É triangular?' },
-                { id: 4, question: 'É forma geométrica?' },
-                { id: 5, question: 'É fruta?' },
-                { id: 6, question: 'É animal?' },
-                { id: 7, question: 'É humano?' },
-                { id: 8, question: 'É extra terrestre?' },
-                { id: 9, question: 'É terráqueo?' },
-                { id: 10, question: 'É filme?' },
-                { id: 11, question: 'É feio?' },
-                { id: 12, question: 'É bonito?' },
-                { id: 13, question: 'É de MG?' },
-                { id: 14, question: 'É Brasileiro?' },
-                { id: 15, question: 'Está vivo?' },
-                { id: 16, question: 'Está morto?' },
-                { id: 17, question: 'É jogador de futebol?' },
-                { id: 18, question: 'É jogador de NBL?' },
-                { id: 19, question: 'É jogador da NFL?' },
-                { id: 20, question: 'É perfeito?' },
-            ];
+            if (system.id !== null) {
+                fetch(`/questions/${system.id}`, {
+                    method: "GET",
+                    headers: { "Content-Type": "application/json" }
+                })
+                .then((res) => res.json())
+                .then((data) => {
+                    this.modalContent.loadedQuestions = data;
+                });
+            }
             this.modal.show();
         },
 

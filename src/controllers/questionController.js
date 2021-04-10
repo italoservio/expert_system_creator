@@ -9,6 +9,14 @@ class QuestionController {
         res.json(arr);
     }
 
+    async getSystemQuestions(req, res) {
+        const questions = await Question.findAll({
+            where: {
+                systemId: req.params.systemId
+            }
+        });
+        res.json(questions);
+    }
 
     async set(req, res) {
 

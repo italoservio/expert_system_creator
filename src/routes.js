@@ -26,6 +26,7 @@ router.get('/element/:id?', elementController.index);
 
 // questionController
 router.get('/all', questionController.getAll);
+router.get('/questions/:systemId?', questionController.getSystemQuestions);
 router.post('/set', questionController.set);
 
 export { router };
