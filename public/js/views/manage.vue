@@ -5,15 +5,12 @@ vueManage = new Vue({
             id: null,
             title: '',
             description: '',
-            elements: [
-                //{ id: 1, element: 'Element 1' questions: []},
-                //{ id: 2, element: 'Element 2' questions: []},
-                //{ id: 3, element: 'Element 3' questions: []}
-            ]
+            elements: []
         },
         lotCaracters: false,
         isEdit: false
     },
+    // Vee validate customization:
     created() {
         this.$validator.extend('required', {
             getMessage: (field) => 'The field "' + field + '" is required',
@@ -44,15 +41,18 @@ vueManage = new Vue({
             helper.setTempSystem(this.form);
             window.location.href = '/element';
         },
+
         goToEditElement(p_index) {
             helper.setTempSystem(this.form);
             window.location.href = `/element/${p_index}`;
         },
+
         backToHome() {
             helper.clearTempSystem();
             window.location.href = '/';
         },
-        // CRUD actions:
+
+        // General Actions:
         async create() {
             const valid = this.$validator.validateAll().then((valid) => valid);
             if (valid) {
@@ -63,30 +63,35 @@ vueManage = new Vue({
                 })
                 .then((res) => res.json())
                 .then((data) => {
-                    helper.clearTempSystem();
-                    window.location.href = '/';
+                    this.backToHome();
                 });
             }
         },
+
         deleteElement(p_index) {
+            let elementId = this.form.elements[p_index].id;
             let system = helper.getTempSystem();
             system.elements.splice(p_index, 1);
             helper.setTempSystem(system);
+
+            if (elementId !== undefined) {
+                fetch(`/element/delete/${elementId}`, {
+                    method: 'delete',
+                });
+            }
             this.form.elements.splice(p_index, 1);
-            // ir ao banco
         },
+
         deleteSystem() {
             const id = helper.getRouteParam(1);
             fetch(`/system/delete/${id}`, {
                 method: 'delete',
-            })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
             });
+            window.location.href = '/';
         },
+
         loadSystem() {
-            if (helper.getRouteParam(1) !== undefined) {
+            if (helper.getRouteParam(1) !== undefined && !helper.hasTempSystem()) {
                 this.isEdit = true;
                 const id = helper.getRouteParam(1);
                 fetch(`/system/get/${id}`, {
@@ -106,6 +111,9 @@ vueManage = new Vue({
                     elements: []
                 });
             } else {
+                if (helper.getRouteParam(1) !== undefined) {
+                    this.isEdit = true;
+                }
                 system = helper.getTempSystem();
                 this.form = system;
             }

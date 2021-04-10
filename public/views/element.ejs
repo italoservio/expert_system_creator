@@ -19,7 +19,7 @@
             </div>
             <div class="card-footer bg-white">
                 <div class="d-flex justify-content-between">
-                    <a href="/manage" class="btn btn-sm btn-outline-secondary box-shadow">Cancel</a>
+                    <a v-on:click="backToManage()" class="btn btn-sm btn-outline-secondary box-shadow">Cancel</a>
                     <button v-on:click="addQuestion" class="btn btn-sm btn-secondary box-shadow">Add question</button>
                 </div>
             </div>

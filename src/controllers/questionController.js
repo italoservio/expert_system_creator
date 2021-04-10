@@ -3,10 +3,13 @@ import { System, Element, Question, QuestionElement } from '../models/associatio
 import * as yup from 'yup';
 
 class QuestionController {
+    // Views
     async getAll(req, res) {
         const arr = await Question.findAll();
         res.json(arr);
     }
+
+
     async set(req, res) {
 
     }

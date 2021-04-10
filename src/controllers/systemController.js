@@ -19,6 +19,13 @@ class SystemController {
         });
     }
 
+    async run(req, res) {
+        res.render('system', {
+            layout: 'layouts/default',
+            bg: 'bg-secondary'
+        });
+    }
+
     // Actions:
     async create(req, res) {
         const t = await sequelize.transaction();
@@ -84,13 +91,9 @@ class SystemController {
     }
 
     async delete(req, res) {
-
         const id = req.params.id;
-        res.json({
-            id: id,
-            status: true
-        });
-
+        const system = await System.findByPk(id);
+        await system.destroy();
     }
 
     async get(req, res) {
@@ -103,6 +106,7 @@ class SystemController {
                 include: [{ model: Element, include: [{ model: QuestionElement, include: [{ model: Question }] }] }]
             });
 
+            //
             let obj = {
                 id: system.id,
                 title: system.title,
@@ -134,13 +138,6 @@ class SystemController {
             res.json(systems);
 
         }
-    }
-
-    async run(req, res) {
-        res.render('system', {
-            layout: 'layouts/default',
-            bg: 'bg-secondary'
-        });
     }
 }
 

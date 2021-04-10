@@ -3,6 +3,7 @@ import { System, Element, Question, QuestionElement } from '../models/associatio
 import * as yup from 'yup';
 
 class QuestionElementController {
+    // Views
     async index(req, res) {
         res.send('QuestionElement');
     }

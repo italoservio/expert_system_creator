@@ -4,10 +4,13 @@ vueIndex = new Vue({
         arrSystems: []
     },
     methods: {
+        // URL Actions:
         goToManage() {
             helper.clearTempSystem();
             window.location.href = '/manage'
         },
+
+        // General actions:
         async getAllSystems() {
             fetch("/system/get", {
                 method: "GET",
@@ -20,6 +23,7 @@ vueIndex = new Vue({
         }
     },
     mounted() {
+        helper.clearTempSystem();
         this.getAllSystems();
     }
 });

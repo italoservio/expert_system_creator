@@ -21,6 +21,7 @@ router.get('/system/get/:id?', systemController.get);
 router.get('/system/:id?', systemController.run);
 
 // elementController
+router.delete('/element/delete/:id?', elementController.delete);
 router.get('/element/:id?', elementController.index);
 
 // questionController

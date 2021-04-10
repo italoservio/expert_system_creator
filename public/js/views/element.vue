@@ -17,6 +17,7 @@ vueElement = new Vue({
         }
     },
     created() {
+        // Vee validate customizations:
         this.$validator.extend('required', {
             getMessage: (field) => 'The field "' + field + '" is required',
             validate: (value) => { return (value !== null) ? (value.length > 0) : false; }
@@ -43,11 +44,22 @@ vueElement = new Vue({
         }
     },
     methods: {
-        // Manual question actions:
+        // URL actions:
+        backToManage() {
+            const system = helper.getTempSystem();
+            if (system.id !== null) {
+                window.location.href = `/manage/${system.id}`;
+            } else {
+                window.location.href = "/manage";
+            }
+        },
+
+        // General Actions:
         clearValidation() {
             this.errors.clear();
             this.$validator.reset();
         },
+
         async addQuestion() {
             this.errors = [];
             await this.$validator.validate('question').then((valid) => {
@@ -62,12 +74,24 @@ vueElement = new Vue({
                 }
             });
         },
+
         removeQuestion(index) {
             this.form.questions.splice(index, 1);
         },
+
         // Import question actions:
         loadQuestions() {
             this.modalContent.title = 'Questions already registered';
+
+            // fetch("/system/get", {
+            //     method: "GET",
+            //     headers: { "Content-Type": "application/json" }
+            // })
+            // .then((res) => res.json())
+            // .then((data) => {
+            //     this.arrSystems = data;
+            // });
+
             this.modalContent.loadedQuestions = [
                 { id: 1, question: 'É redondo?' },
                 { id: 2, question: 'É quadrado?' },
@@ -92,12 +116,15 @@ vueElement = new Vue({
             ];
             this.modal.show();
         },
+
         removeImportedQuestion(index) {
             this.$children[0].selectedQuestions.splice(index, 1);
         },
+
         importQuestions() {
             this.modalContent.selectedQuestions = this.$children[0].selectedQuestions;
         },
+
         searchQuestion() {
             // Searching and sending finded elements to component list-data:
             if (this.modalContent.search !== '') {
@@ -108,11 +135,9 @@ vueElement = new Vue({
                     }
                 }
             }
-            this.setListedData(this.modalContent.searchedQuestions);
+            this.$children[0].listData = this.modalContent.searchedQuestions;
         },
-        setListedData(array) {
-            this.$children[0].listData = array;
-        },
+
         // Element actions
         async sendElement() {
             await this.$validator.validate('element name').then((valid) => {
@@ -123,10 +148,11 @@ vueElement = new Vue({
                     } else {
                         helper.addElementToTempSystem(this.form);
                     }
-                    window.location.href = "/manage";
+                    this.backToManage();
                 }
             });
         },
+
         loadElement() {
             const index = helper.getRouteParam(1);
             if (index !== undefined) {
