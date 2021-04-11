@@ -1,4 +1,4 @@
-import { Element } from '../models/associations.js';
+import { Element, Question, QuestionElement } from '../models/associations.js';
 
 class ElementController {
     // Views
@@ -12,6 +12,18 @@ class ElementController {
     // Actions
     async delete(req, res) {
         const id = req.params.id;
+        const questionElement = await QuestionElement.findAll({
+            attributes: ['questionId'],
+            where: {
+                elementId: id
+            }
+        });
+
+        for (const i of questionElement) {
+            const question = await Question.findByPk(i.questionId);
+            await question.destroy();
+        }
+
         const element = await Element.findByPk(id);
         await element.destroy();
     }
