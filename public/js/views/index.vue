@@ -13,7 +13,7 @@ vueIndex = new Vue({
         // General actions:
         async getAllSystems() {
             fetch("/system/get", {
-                method: "GET",
+                method: "get",
                 headers: { "Content-Type": "application/json" }
             })
             .then((res) => res.json())
@@ -23,6 +23,7 @@ vueIndex = new Vue({
         }
     },
     mounted() {
+        this.arrSystems = [];
         helper.clearTempSystem();
         this.getAllSystems();
     }

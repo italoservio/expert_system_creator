@@ -1,6 +1,4 @@
-import sequelize from '../db.js';
-import { System, Element, Question, QuestionElement } from '../models/associations.js';
-import * as yup from 'yup';
+import { Element } from '../models/associations.js';
 
 class ElementController {
     // Views
@@ -16,6 +14,23 @@ class ElementController {
         const id = req.params.id;
         const element = await Element.findByPk(id);
         await element.destroy();
+    }
+
+    async getSystemElements(req, res) {
+        const elements = await Element.findAll({
+            where: {
+                systemId: req.params.systemId
+            }
+        });
+        let arrElements = [];
+        for (const i of elements) {
+            arrElements.push({
+                id: i.id,
+                element: i.element,
+                points: 0
+            });
+        }
+        res.json(arrElements);
     }
 }
 

@@ -40,5 +40,10 @@ const helper = {
 
     capitalize(p_str) {
         return p_str[0].toUpperCase() + p_str.slice(1);
+    },
+
+    getRandomInt(p_max) {
+        p_max = Math.floor(p_max);
+        return Math.floor(Math.random() * (p_max - 0)) + 0;
     }
 }

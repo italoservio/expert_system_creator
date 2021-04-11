@@ -1,14 +1,6 @@
-import sequelize from '../db.js';
-import { System, Element, Question, QuestionElement } from '../models/associations.js';
-import * as yup from 'yup';
+import { Question } from '../models/associations.js';
 
 class QuestionController {
-    // Views
-    async getAll(req, res) {
-        const arr = await Question.findAll();
-        res.json(arr);
-    }
-
     async getSystemQuestions(req, res) {
         const questions = await Question.findAll({
             where: {
@@ -16,10 +8,6 @@ class QuestionController {
             }
         });
         res.json(questions);
-    }
-
-    async set(req, res) {
-
     }
 }
 

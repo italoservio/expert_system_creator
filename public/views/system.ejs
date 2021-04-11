@@ -1,27 +1,29 @@
-<div class="row mx-0 justify-content-center">
+<div id="vueSystem" class="row mx-0 justify-content-center">
     <div class="col-lg-8 my-2 px-0">
         <div class="card box-shadow">
             <div class="card-body py-4">
                 <div class="d-flex justify-content-between">
-                    <h1 class="h3">System name</h1>
+                    <h1 class="h3">{{ systemTitle }}</h1>
                     <div>
                         <a class="link-secondary cursor-pointer"><i class="far fa-question-circle fa-lg"></i></a>
                     </div>
                 </div>
-                <p class="my-3">É um animal?</p>
+                <p v-text="form.question.question" class="my-3"></p>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" id="sim" />
-                    <label class="form-check-label" for="sim">Yes</label>
+                    <input v-model="form.answer" class="form-check-input" value="true" type="radio" name="answer" id="y">
+                    <label class="form-check-label" for="y">True</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" id="nao" />
-                    <label class="form-check-label" for="nao">No</label>
+                    <input v-model="form.answer" class="form-check-input" value="false" type="radio" name="answer" id="n">
+                    <label class="form-check-label" for="n">False</label>
                 </div>
             </div>
             <div class="card-footer d-flex justify-content-between">
-                <button class="btn btn-sm btn-outline-secondary">Cancel</button>
-                <button class="btn btn-sm btn-success">Send answer</button>
+                <a href="/" class="btn btn-sm btn-outline-secondary">Cancel</a>
+                <button v-on:click="sendAnswer()" class="btn btn-sm btn-success">Send answer</button>
             </div>
         </div>
     </div>
 </div>
+
+<script src="/js/views/system.vue"></script>

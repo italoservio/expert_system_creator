@@ -1,0 +1,35 @@
+<div id="vueResult" class="row mx-0 justify-content-center">
+    <!-- Card 1 -->
+    <div class="col-lg-8 my-2 px-0">
+        <div class="card box-shadow">
+            <div class="card-header text-center">
+                <h2 class="h5 text-secondary mt-4">The result element is:</h2>
+                <h1 class="h4 text-uppercase">{{ element.element }}</h1>
+            </div>
+            <div class="card-body py-4">
+
+                <!-- History -->
+                <h2 class="h5 text-secondary text-center mt-4">History to get this result</h2>
+                <ul class="list-group list-group-flush">
+                    <li v-for="obj in history" class="list-group-item">
+                        <b>{{ obj.question.question }}</b>
+                        <br />
+                        <i>{{ obj.answer }}</i>
+                    </li>
+                </ul>
+
+                <!-- Other elements -->
+                <h2 class="h5 text-secondary text-center mt-4">Punctuation of the elements</h2>
+                <ul class="list-group list-group-flush">
+                    <li v-for="el in allElements" class="list-group-item">
+                        <b>{{ el.element }}</b>
+                        <br />
+                        <i>Points: {{ el.points }}</i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/views/result.vue"></script>

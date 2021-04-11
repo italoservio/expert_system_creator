@@ -121,11 +121,16 @@ vueElement = new Vue({
         async sendElement() {
             await this.$validator.validate('element name').then((valid) => {
                 if (valid) {
+                    const obj = {
+                        id: this.form.id,
+                        element: this.form.element,
+                        questions: this.allQuestions
+                    }
                     const index = helper.getRouteParam(1);
                     if (index !== undefined) {
-                        helper.addElementToTempSystem(this.form, index);
+                        helper.addElementToTempSystem(obj, index);
                     } else {
-                        helper.addElementToTempSystem(this.form);
+                        helper.addElementToTempSystem(obj);
                     }
                     this.backToManage();
                 }

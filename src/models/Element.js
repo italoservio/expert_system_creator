@@ -1,6 +1,5 @@
 import pkg from 'sequelize';
-import System from './System.js';
-import sequelize from '../db.js';
+import { sequelize } from '../db.js';
 
 const { DataTypes } = pkg;
 const Element = sequelize.define('element', {

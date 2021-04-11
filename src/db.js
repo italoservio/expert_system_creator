@@ -9,4 +9,4 @@ const sequelize = new Sequelize({
 //Remember to synchronize database in the first run:
 //(async () => { await sequelize.sync(); })();
 
-export default sequelize;
+export { sequelize, Sequelize };

@@ -1,6 +1,5 @@
-import sequelize from '../db.js';
-import * as yup from 'yup';
-import { System, Element, Question, QuestionElement } from '../models/associations.js';
+import { sequelize } from '../db.js';
+import { Element, Question, QuestionElement, System } from '../models/associations.js';
 
 class SystemController {
     // Views:
@@ -23,6 +22,13 @@ class SystemController {
         res.render('system', {
             layout: 'layouts/default',
             bg: 'bg-secondary'
+        });
+    }
+
+    async result(req, res) {
+        res.render('result', {
+            layout: 'layouts/default',
+            bg: 'bg-warning'
         });
     }
 
@@ -76,7 +82,8 @@ class SystemController {
                         // Creating question element:
                         await QuestionElement.create({
                             elementId: element.id,
-                            questionId: question.id
+                            questionId: question.id,
+                            systemId: system.id
                         }, { transaction: t });
                     }
                 }
@@ -138,6 +145,14 @@ class SystemController {
             res.json(systems);
 
         }
+    }
+
+    async getTitle(req, res) {
+        const system = await System.findOne({
+            attributes: ['title'],
+            where: { id: req.params.id }
+        });
+        res.json(system);
     }
 }
 

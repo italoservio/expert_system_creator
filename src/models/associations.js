@@ -11,6 +11,7 @@ System.hasMany(Question, {
     onDelete: 'cascade',
     hooks: true,
 });
+System.hasMany(QuestionElement);
 
 Element.belongsTo(System);
 Question.belongsTo(System);
@@ -24,6 +25,7 @@ Question.hasMany(QuestionElement, {
     hooks: true,
 });
 
+QuestionElement.belongsTo(System);
 QuestionElement.belongsTo(Element);
 QuestionElement.belongsTo(Question);
 
