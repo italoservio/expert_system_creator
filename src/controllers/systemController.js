@@ -70,9 +70,23 @@ class SystemController {
                     // Creating or editing question:
                     let question = {};
                     if (j.id !== null) {
-                        question = await Question.findByPk(j.id);
-                        question.question =  j.question;
-                        question.save({ transaction: t });
+
+                        // Verifying if the questionElement already exists to create
+                        const questionElement = await QuestionElement.findOne({
+                            where: {
+                                elementId: element.id,
+                                questionId: j.id
+                            },
+                        }, { transaction: t });
+
+                        if (questionElement === null) {
+                            await QuestionElement.create({
+                                elementId: element.id,
+                                questionId: j.id,
+                                systemId: system.id
+                            }, { transaction: t });
+                        }
+
                     } else {
                         question = await Question.create({
                             question: j.question,
