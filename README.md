@@ -36,14 +36,16 @@ To do this, open the terminal in the project folder and type:</p>
 
 <h3 align="center">📸 System prints</h3>
 <p align="center">See some system prints</p>
-<table align="center">
+<table>
 	<tr>
 		<td><img src="https://i.imgur.com/Mj26Prb.png" height="500px" width="500px" alt="Home"></td>
 		<td><img src="https://i.imgur.com/e0L7iAB.png" height="500px" width="500px" alt="Manage"></td>
-		<td><img src="https://i.imgur.com/mwxyN0q.png" height="500px" width="500px" alt="Element"></td>
 	</tr>
 	<tr>
+		<td><img src="https://i.imgur.com/mwxyN0q.png" height="500px" width="500px" alt="Element"></td>
 		<td><img src="https://i.imgur.com/HA3gOnX.png" height="500px" width="500px" alt="Running"></td>
+	</tr>
+	<tr>	
 		<td><img src="https://i.imgur.com/RdFG0bF.png" height="500px" width="500px" alt="Result"></td>
 		<td><img src="https://i.imgur.com/nDEzjQt.png" height="500px" width="500px" alt="Import"></td>
 	</tr>
