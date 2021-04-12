@@ -6,9 +6,51 @@ Web application developed using NodeJS w / ExpressJS, VueJS and SQLite that allo
 
 <br />
 
-<h3 align="center"> 
-	🟠 Status: Under development
-</h3>
+<h3 align="center">🟠 Status: Under development</h3>
+
+<br />
+
+<h3 align="center">⚠ Warning</h3>
+<p align="center">You can create expert systems on several things. <br />
+When creating elements, to use the same questions, you must save the system with an element that already has the question, and only then, when creating another element, the question will be available for import. <br />
+If you do not use the question import and register the same question twice, the system will not work as expected.</p>
+
+<br />
+
+<h3 align="center">😍 How to use</h3>
+<p align="center">The first step after downloading the project is to update the NPM packages. To do this you need to have NodeJS and NPM installed (<a href="https://nodejs.org/en/">Go to NodeJS download page</a>)<br />
+To do this, open the terminal in the project folder and type:</p>
+```
+npm update
+```
+<p align="center">If you want to recreate the database, delete the file "db.sqlite", and in the file "db.js" uncomment line 10 on the first run:</p>
+```
+(async () => { await sequelize.sync(); })();
+```
+<p align="center">To run the project, open the terminal in the project folder and execute the command:</p>
+```
+npm run one
+```
+
+<br />
+
+<h3 align="center">📸 System prints</h3>
+<p align="center">See some system prints</p>
+<h1 align="center">
+  <img alt="First screen" src="https://i.imgur.com/Mj26Prb.png" />
+</h1>
+<h1 align="center">
+  <img alt="First screen" src="https://i.imgur.com/e0L7iAB.png" />
+</h1>
+<h1 align="center">
+  <img alt="First screen" src="https://i.imgur.com/mwxyN0q.png" />
+</h1>
+<h1 align="center">
+  <img alt="First screen" src="https://i.imgur.com/HA3gOnX.png" />
+</h1>
+<h1 align="center">
+  <img alt="First screen" src="https://i.imgur.com/RdFG0bF.png" />
+</h1>
 
 <br />
 
