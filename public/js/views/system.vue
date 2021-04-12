@@ -17,8 +17,11 @@ vueSystem = new Vue({
     methods: {
         sendAnswer() {
             if (this.form.answer !== null) {
-
-                this.answerHistory.push(this.form);
+                const obj = {
+                    answer: this.form.answer,
+                    question: this.form.question
+                }
+                this.answerHistory.push(obj);
 
                 fetch(`/questionElement/answer?questionId=${this.form.question.id}&answer=${this.form.answer}&systemId=${this.systemId}`, {
                     method: "get",
@@ -26,7 +29,6 @@ vueSystem = new Vue({
                 })
                 .then((res) => res.json())
                 .then((data) => {
-
                     // Incrementing 1 point to the elements that can be a response:
                     for (const i of this.arrElements) {
                         for (const j of data.elements) {
@@ -42,9 +44,20 @@ vueSystem = new Vue({
                             history: this.answerHistory,
                         }
                         window.localStorage.setItem('result', JSON.stringify(result));
+                        window.location.href = `/system/${this.systemId}/result`;
+                    } else if (data.elements.length === 0) {
+                        const result = {
+                            element: {
+                                id: 0,
+                                element: 'Not found'
+                            },
+                            allElements: this.arrElements,
+                            history: this.answerHistory,
+                        }
+                        window.localStorage.setItem('result', JSON.stringify(result));
                         window.location.href = `/system/${this.systemId}/result`
                     }
-                    
+
                     // Updating questions:
                     this.arrQuestions = data.questions;
                     this.setNextQuestion();
@@ -95,8 +108,23 @@ vueSystem = new Vue({
 
         setNextQuestion() {
             const randomIndex = helper.getRandomInt(this.arrQuestions.length);
-            this.form.question = this.arrQuestions[randomIndex];
-            this.form.answer = null;
+            if (this.answerHistory.length > 0) {
+                var count = 0;
+                for (const i of this.answerHistory) {
+                    if (this.arrQuestions[randomIndex].id === i.question.id) {
+                        count++;
+                    }
+                }
+                if (count === 0) {
+                    this.form.question = this.arrQuestions[randomIndex];
+                    this.form.answer = null;
+                } else {
+                    this.setNextQuestion();
+                }
+            } else {
+                this.form.question = this.arrQuestions[randomIndex];
+                this.form.answer = null;
+            }
         },
 
         setSystemId() {

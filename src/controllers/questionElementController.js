@@ -6,6 +6,8 @@ class QuestionElementController {
     static organizeData(p_questionElement) {
         const matchedElements = [];
         const matchedQuestions = [];
+        const filteredElements = [];
+        const filteredQuestions = [];
 
         for (const i of p_questionElement) {
             matchedElements.push({
@@ -19,9 +21,35 @@ class QuestionElementController {
                 });
             }
         }
+
+        // Filtering questions and elements so there are no equal
+        for (const e of matchedElements) {
+            if (filteredElements.length > 0) {
+                var count = 0;
+                for (const f of filteredElements) {
+                    if (e.id === f.id) count++;
+                }
+                if (count === 0) filteredElements.push(e);
+            } else {
+                filteredElements.push(e);
+            }
+        }
+
+        for (const q of matchedQuestions) {
+            if (filteredQuestions.length > 0) {
+                var count = 0;
+                for (const f of filteredQuestions) {
+                    if (q.id === f.id) count++;
+                }
+                if (count === 0) filteredQuestions.push(q);
+            } else {
+                filteredQuestions.push(q);
+            }
+        }
+
         return {
-            elements: matchedElements,
-            questions: matchedQuestions
+            elements: filteredElements,
+            questions: filteredQuestions
         }
     }
 
@@ -52,7 +80,7 @@ class QuestionElementController {
             }]
         });
 
-        organizedData = QuestionElementController.organizeData(questionElement)
+        organizedData = QuestionElementController.organizeData(questionElement);
 
         if (answer) {
             res.json(organizedData);
