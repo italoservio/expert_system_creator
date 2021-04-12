@@ -36,19 +36,19 @@ If you do not use the question import and register the same question twice, the 
 <br />
 
 <h3 align="center">📸 System prints</h3>
-<p align="center">See some system prints</p>
+<p align="center">See some system screens below</p>
 <table>
 	<tr>
-		<td><img src="https://i.imgur.com/Mj26Prb.png" height="500px" width="500px" alt="Home"></td>
-		<td><img src="https://i.imgur.com/e0L7iAB.png" height="500px" width="500px" alt="Manage"></td>
+		<td><img src="https://i.imgur.com/Mj26Prb.png" height="450px" alt="Home"></td>
+		<td><img src="https://i.imgur.com/e0L7iAB.png" height="450px" alt="Manage"></td>
 	</tr>
 	<tr>
-		<td><img src="https://i.imgur.com/mwxyN0q.png" height="500px" width="500px" alt="Element"></td>
-		<td><img src="https://i.imgur.com/HA3gOnX.png" height="500px" width="500px" alt="Running"></td>
+		<td><img src="https://i.imgur.com/mwxyN0q.png" height="450px" alt="Element"></td>
+		<td><img src="https://i.imgur.com/HA3gOnX.png" height="450px" alt="Running"></td>
 	</tr>
 	<tr>	
-		<td><img src="https://i.imgur.com/RdFG0bF.png" height="500px" width="500px" alt="Result"></td>
-		<td><img src="https://i.imgur.com/nDEzjQt.png" height="500px" width="500px" alt="Import"></td>
+		<td><img src="https://i.imgur.com/RdFG0bF.png" height="450px" alt="Result"></td>
+		<td><img src="https://i.imgur.com/nDEzjQt.png" height="450px" alt="Import"></td>
 	</tr>
 </table>
 
