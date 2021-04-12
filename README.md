@@ -20,37 +20,34 @@ If you do not use the question import and register the same question twice, the 
 <h3 align="center">😍 How to use</h3>
 <p align="center">The first step after downloading the project is to update the NPM packages. To do this you need to have NodeJS and NPM installed (<a href="https://nodejs.org/en/">Go to NodeJS download page</a>)<br />
 To do this, open the terminal in the project folder and type:</p>
-```
-npm update
-```
+<pre>
+  npm update
+</pre>
 <p align="center">If you want to recreate the database, delete the file "db.sqlite", and in the file "db.js" uncomment line 10 on the first run:</p>
-```
-(async () => { await sequelize.sync(); })();
-```
+<pre>
+  (async () => { await sequelize.sync(); })();
+</pre>
 <p align="center">To run the project, open the terminal in the project folder and execute the command:</p>
-```
-npm run one
-```
+<pre>
+  npm run one
+</pre>
 
 <br />
 
 <h3 align="center">📸 System prints</h3>
 <p align="center">See some system prints</p>
-<h1 align="center">
-  <img alt="First screen" src="https://i.imgur.com/Mj26Prb.png" />
-</h1>
-<h1 align="center">
-  <img alt="First screen" src="https://i.imgur.com/e0L7iAB.png" />
-</h1>
-<h1 align="center">
-  <img alt="First screen" src="https://i.imgur.com/mwxyN0q.png" />
-</h1>
-<h1 align="center">
-  <img alt="First screen" src="https://i.imgur.com/HA3gOnX.png" />
-</h1>
-<h1 align="center">
-  <img alt="First screen" src="https://i.imgur.com/RdFG0bF.png" />
-</h1>
+<table align="center">
+	<tr>
+		<td><img src="https://i.imgur.com/Mj26Prb.png" height="500px" width="500px" alt="Home"></td>
+		<td><img src="https://i.imgur.com/e0L7iAB.png" height="500px" width="500px" alt="Manage"></td>
+		<td><img src="https://i.imgur.com/mwxyN0q.png" height="500px" width="500px" alt="Element"></td>
+	</tr>
+	<tr>
+		<td><img src="https://i.imgur.com/HA3gOnX.png" height="500px" width="500px" alt="Running"></td>
+		<td><img src="https://i.imgur.com/RdFG0bF.png" height="500px" width="500px" alt="Result"></td>
+		<td><img src="https://i.imgur.com/nDEzjQt.png" height="500px" width="500px" alt="Import"></td>
+	</tr>
+</table>
 
 <br />
 
