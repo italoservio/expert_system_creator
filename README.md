@@ -30,7 +30,8 @@ If you do not use the question import and register the same question twice, the 
 <pre>
   npm run one
 </pre>
-<p align="center">The server will go up at port 3000. To access the system, just type in your browser:</p> <a href="http://localhost:3000">http://localhost:3000</a>
+<p align="center">The server will go up at port 3000. To access the system, just type in your browser:</p>
+<a align="center" href="http://localhost:3000">http://localhost:3000</a>
 
 <br />
 
