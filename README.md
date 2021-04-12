@@ -18,8 +18,7 @@ If you do not use the question import and register the same question twice, the 
 <br />
 
 <h3 align="center">😍 How to use</h3>
-<p align="center">The first step after downloading the project is to update the NPM packages. To do this you need to have NodeJS and NPM installed (<a href="https://nodejs.org/en/">Go to NodeJS download page</a>)<br />
-To do this, open the terminal in the project folder and type:</p>
+<p align="center">The first step after downloading the project is to update the NPM packages. To do this you need to have NodeJS and NPM installed (<a href="https://nodejs.org/en/">Go to NodeJS download page</a>). To do this, open the terminal in the project folder and type:</p>
 <pre>
   npm update
 </pre>
@@ -31,6 +30,7 @@ To do this, open the terminal in the project folder and type:</p>
 <pre>
   npm run one
 </pre>
+<p align="center">The server will go up at port 3000. To access the system, just type in your browser:</p> <a href="http://localhost:3000">http://localhost:3000</a>
 
 <br />
 
