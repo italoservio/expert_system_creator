@@ -4,6 +4,7 @@ vueManage = new Vue({
         form: {
             id: null,
             title: '',
+            createdBy: '',
             description: '',
             elements: []
         },

@@ -13,6 +13,7 @@ const System = sequelize.define('system', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    createdBy: DataTypes.STRING,
     description: DataTypes.STRING
 });
 

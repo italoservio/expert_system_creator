@@ -35,17 +35,20 @@ class SystemController {
     // Actions:
     async create(req, res) {
         const t = await sequelize.transaction();
+
         try {
             // Creating or editing system:
             let system = {};
             if (req.body.id !== null) {
                 system = await System.findByPk(req.body.id);
                 system.title = req.body.title;
-                system.description = req.body.description
-                system.save({transaction: t});
+                system.createdBy = req.body.createdBy;
+                system.description = req.body.description;
+                await system.save({transaction: t});
             } else {
                 system = await System.create({
                     title: req.body.title,
+                    createdBy : req.body.createdBy,
                     description: req.body.description
                 }, {transaction: t});
             }
@@ -57,7 +60,7 @@ class SystemController {
                 if (i.id !== null) {
                     element = await Element.findByPk(i.id);
                     element.element = i.element;
-                    element.save({transaction: t});
+                    await element.save({transaction: t});
                 } else {
                     element = await Element.create({
                         element: i.element,
@@ -132,6 +135,7 @@ class SystemController {
                 id: system.id,
                 title: system.title,
                 description: system.description,
+                createdBy: system.createdBy,
                 elements: []
             };
             for (const i of system.elements) {

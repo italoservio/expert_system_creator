@@ -11,10 +11,17 @@
                 </div>
                 <div class="row mx-0">
                     <div class="col-lg-6 px-0">
-                        <div class="form-group my-4 px-0">
+                        <div class="form-group my-4 pe-0 pe-lg-1">
                             <label>System name</label>
                             <input data-vv-name="system name" v-model="form.title" v-validate="'required'" type="text" class="form-control" />
                             <small class="text-danger">{{ errors.first('system name') }}</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 px-0">
+                        <div class="form-group mb-4 my-lg-4 ps-0 ps-lg-1">
+                            <label>Creator name</label>
+                            <input data-vv-name="creator name" v-model="form.createdBy" v-validate="'required'" type="text" class="form-control" />
+                            <small class="text-danger">{{ errors.first('creator name') }}</small>
                         </div>
                     </div>
                     <div class="form-group mb-4 px-0">
