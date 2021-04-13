@@ -41,7 +41,7 @@ Vue.component('system-card', {
     <div class="card box-shadow card-system mx-1">
         <div class="card-header bg-white py-3 px-4">
             <h1 class="h5 mb-0">{{reduceTitle}}</h1>
-            <small class="text-muted">Created by: {{createdBy}}<small>
+            <small class="text-muted">Created by: {{createdBy}}</small>
         </div>
         <div class="card-body px-4">
             <p class="text-justify text-muted mb-0">
