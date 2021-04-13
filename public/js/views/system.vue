@@ -90,7 +90,12 @@ vueSystem = new Vue({
                 })
                 .then((res) => res.json())
                 .then((data) => {
-                    this.arrElements = data;
+                    if (data.length > 1) {
+                        this.arrElements = data;
+                    } else {
+                        alert('You need to create at least 2 elements');
+                        window.location.href = '/';
+                    }
                 });
             }
         },
@@ -144,5 +149,9 @@ vueSystem = new Vue({
         this.getSystemQuestions();
         this.getSystemElements();
         this.getSystemTitle();
+        this.modal = new bootstrap.Modal(document.getElementById('modalHelp'), {
+            keyboard: false,
+            backdrop: 'static'
+        });
     }
 });

@@ -5,7 +5,7 @@
                 <div class="d-flex justify-content-between">
                     <h1 class="h3">{{ systemTitle }}</h1>
                     <div>
-                        <a class="link-secondary cursor-pointer"><i class="far fa-question-circle fa-lg"></i></a>
+                        <a data-bs-toggle="modal" data-bs-target="#modalHelp" class="link-secondary cursor-pointer"><i class="far fa-question-circle fa-lg"></i></a>
                     </div>
                 </div>
                 <p v-text="form.question.question" class="my-3"></p>
@@ -21,6 +21,30 @@
             <div class="card-footer d-flex justify-content-between">
                 <a href="/" class="btn btn-sm btn-outline-secondary">Cancel</a>
                 <button v-on:click="sendAnswer()" class="btn btn-sm btn-success">Send answer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 1 -->
+    <div id="modalHelp" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Why are we asking this?</h5>
+                </div>
+                <div class="modal-body">
+                    <p class="px-2">Based on your most recent answers, we have classified the possible elements. You can see the score below:</p>
+                    <ul class="list-group list-group-flush">
+                        <li v-for="el in arrElements" class="list-group-item">
+                            <b>{{ el.element }}</b>
+                            <br />
+                            <i>Points: {{ el.points }}</i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer d-flex justify-content-end">
+                    <button type="button" class="btn btn-sm btn-primary" data-bs-dismiss="modal">Exit modal</button>
+                </div>
             </div>
         </div>
     </div>
