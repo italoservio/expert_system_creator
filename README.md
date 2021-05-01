@@ -6,7 +6,7 @@ Web application developed using NodeJS w / ExpressJS, VueJS and SQLite that allo
 
 <br />
 
-<h3 align="center">🟠 Status: Under development</h3>
+<h3 align="center">🟢 Status: Concluded</h3>
 
 <br />
 
@@ -38,18 +38,24 @@ If you do not use the question import and register the same question twice, the 
 <h3 align="center">📸 System prints</h3>
 <p align="center">See some system screens below</p>
 <table>
-	<tr>
-		<td><img src="https://i.imgur.com/Mj26Prb.png" height="450px" alt="Home"></td>
-		<td><img src="https://i.imgur.com/e0L7iAB.png" height="450px" alt="Manage"></td>
-	</tr>
-	<tr>
-		<td><img src="https://i.imgur.com/mwxyN0q.png" height="450px" alt="Element"></td>
-		<td><img src="https://i.imgur.com/HA3gOnX.png" height="450px" alt="Running"></td>
-	</tr>
-	<tr>	
-		<td><img src="https://i.imgur.com/RdFG0bF.png" height="450px" alt="Result"></td>
-		<td><img src="https://i.imgur.com/nDEzjQt.png" height="450px" alt="Import"></td>
-	</tr>
+  <tr>
+    <td><img src="https://i.imgur.com/If2mBkj.png" alt="Home"></td>		
+  </tr>
+  <tr>
+    <td><img src="https://i.imgur.com/sba3YAX.png" alt="Manage"></td>		
+  </tr>
+  <tr>
+    <td><img src="https://i.imgur.com/5Xd66AS.png" alt="Element"></td>		
+  </tr>
+  <tr>
+    <td><img src="https://i.imgur.com/bafRo2v.png" alt="Element 2"></td>		
+  </tr>
+  <tr>
+    <td><img src="https://i.imgur.com/lBSIbfE.png" alt="Questions"></td>		
+  </tr>
+  <tr>
+    <td><img src="https://i.imgur.com/GpB1URG.png" alt="Result"></td>		
+  </tr>
 </table>
 
 <br />
@@ -57,7 +63,7 @@ If you do not use the question import and register the same question twice, the 
 <h3 align="center">⚡ ER Diagram</h3>
 <p align="center">Understand the database structure</p>
 <h1 align="center">
-  <img alt="First screen" src="https://i.imgur.com/itRLazf.png" />
+  <img alt="ERD" src="https://i.imgur.com/63mfMXF.png" />
 </h1>
 
 <br />
